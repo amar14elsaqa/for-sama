@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Sky ✨</title>
+    <!-- خطوط عربية وإنجليزية أنيقة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- خلفية النجوم المتحركة -->
+    <canvas id="starsCanvas"></canvas>
+
+    <!-- شاشة البداية / الترحيب (مهمة عشان المتصفح يسمح بتشغيل الأغنية أوتوماتيك بعد الضغطة) -->
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-content">
+            <span class="moon-icon">✨🌙</span>
+            <h1 class="en-title">Semo</h1>
+            <p>عالم صغير اتعمل مخصوص عشانك...</p>
+            <button id="enterBtn" class="glow-btn">افتحي المفاجأة 🌹</button>
+        </div>
+    </div>
+
+    <!-- مشغل الموسيقى العائم -->
+    <div class="music-player" id="musicPlayer">
+        <button id="playPauseBtn" title="تشغيل / إيقاف">🎵</button>
+        <div class="song-info">
+            <span class="song-title">حلم عمري</span>
+            <span class="song-status" id="songStatus">شغالة في الخلفية</span>
+        </div>
+        <!-- حط ملف الأغنية جنب الكود باسم song.mp3 -->
+        <audio id="bgMusic" loop>
+            <source src="https://files.catbox.moe/q0bjmm.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container hidden" id="mainContent">
+        
+        <!-- القسم الأول: العنوان الرئيسي -->
+        <header class="hero section-fade">
+            <p class="subtitle">لأجمل عيون شافتها عيني 😍</p>
+            <h1 class="main-title">Baskouty <span class="highlight">🍪❤️Semo<</h1>
+            <p class="hero-desc">من يوم ما عرفتك وكل حاجة بقت أحلى بكتير 💕</p>
+        </header>
+
+        <!-- القسم الثاني: عداد الأيام واللحظات -->
+        <section class="counters-section section-fade">
+            <h2 class="section-title">The Start of Everything⏳</h2>
+            <div class="counters-grid">
+                
+                <!-- عداد أول كلام شات: 24/2/2026 -->
+                <div class="counter-card">
+                    <div class="card-header">
+                        <span class="icon">💬</span>
+                        <h3>أول يوم اتكلمنا فيه</h3>
+                        <span class="date-badge">24 / 02 / 2026</span>
+                    </div>
+                    <div class="timer" id="chatTimer">
+                        <div class="time-box"><span id="chat-days">0</span><small>يوم</small></div>
+                        <div class="time-box"><span id="chat-hours">0</span><small>ساعة</small></div>
+                        <div class="time-box"><span id="chat-mins">0</span><small>دقيقة</small></div>
+                        <div class="time-box"><span id="chat-secs">0</span><small>ثانية</small></div>
+                    </div>
+                </div>
+
+                <!-- عداد أول مقابلة: 24/5/2026 -->
+                <div class="counter-card">
+                    <div class="card-header">
+                        <span class="icon">✨</span>
+                        <h3>أول يوم اتقابلنا فيه</h3>
+                        <span class="date-badge">24 / 05 / 2026</span>
+                    </div>
+                    <div class="timer" id="meetTimer">
+                        <div class="time-box"><span id="meet-days">0</span><small>يوم</small></div>
+                        <div class="time-box"><span id="meet-hours">0</span><small>ساعة</small></div>
+                        <div class="time-box"><span id="meet-mins">0</span><small>دقيقة</small></div>
+                        <div class="time-box"><span id="meet-secs">0</span><small>ثانية</small></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- القسم الثالث: ألبوم الصور -->
+        <section class="gallery-section section-fade">
+            <h2 class="section-title">Our Moments 📸</h2>
+         
+            
+            <div class="gallery-grid">
+                <!-- صورتكم سوا (مميزة بعرض كامل) -->
+                <div class="photo-card featured" onclick="openLightbox('https://i.postimg.cc/qRNtj4rh/us.jpg', 'أحلى لحظة جمعتنا سوا ❤️')">
+                    <img src="https://i.postimg.cc/qRNtj4rh/us.jpg" alt="Semo and Sky" onerror="this.src='https://placehold.co/800x500/161b33/ffd166?text=صورة+لينا+سوا+(us.jpg)'">
+                    <div class="photo-caption">أحلى لحظة جمعتنا سوا ❤️</div>
+                </div>
+
+                <!-- صور ليها (تقدر تزود أو تنقص براحتك) -->
+                <div class="photo-card" onclick="openLightbox('https://i.postimg.cc/j5b61D8r/sky2.jpg', 'ضحكتك اللي بتنور الدنيا')">
+                    <img src="https://i.postimg.cc/j5b61D8r/sky2.jpg" alt="Sky 1" onerror="this.src='https://placehold.co/400x500/161b33/ff758f?text=صورة+1+(sky1.jpg)'">
+                    <div class="photo-caption">ضحكتك اللي بتنور الدنيا</div>
+                </div>
+
+                <div class="photo-card" onclick="openLightbox('https://i.postimg.cc/Vk0jLqp8/sky3.jpg', 'فستاني😍')">
+                    <img src="https://i.postimg.cc/Vk0jLqp8/sky3.jpg" alt="Sky 2" onerror="this.src='https://placehold.co/400x500/161b33/ff758f?text=صورة+2+(sky2.jpg)'">
+                    <div class="photo-caption">فستاني😍</div>
+                </div>
+
+                <div class="photo-card" onclick="openLightbox('https://i.postimg.cc/GhHDqPcf/sky4.jpg', 'My cookie🥰')">
+                    <img src="https://i.postimg.cc/GhHDqPcf/sky4.jpg" alt="Sky 3" onerror="this.src='https://placehold.co/400x500/161b33/ff758f?text=صورة+3+(sky3.jpg)'">
+                    <div class="photo-caption">My cookie🥰</div>
+                </div>
+
+                <div class="photo-card" onclick="openLightbox('https://i.postimg.cc/nhr3K9W6/sky1.jpg', 'كل تفصيلة فيكي تتحب')">
+                    <img src="https://i.postimg.cc/nhr3K9W6/sky1.jpg" alt="Sky 4" onerror="this.src='https://placehold.co/400x500/161b33/ff758f?text=صورة+4+(sky4.jpg)'">
+                    <div class="photo-caption">كل تفصيلة فيكي تتحب</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- القسم الرابع: أسباب حبي ليكي (بطاقات تفاعلية) -->
+        <section class="reasons-section section-fade">
+            <h2 class="section-title">ليه بحبك يا Semo؟ 💫</h2>
+            <div class="reasons-grid">
+                <div class="reason-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front">✨ السبب الأول</div>
+                        <div class="card-back">عشان وجودك بيطمني وبيهون عليا أي تعب في الدنيا❤️</div>
+                    </div>
+                </div>
+                <div class="reason-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front">🌙 السبب التاني</div>
+                        <div class="card-back">عشان عينيكي وملامحك اللي بتخطف قلبي من أول نظرة من غير ما تعملي أي مجهود 😍💘</div>
+                    </div>
+                </div>
+                <div class="reason-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner">
+                        <div class="card-front">❤️ السبب التالت</div>
+                        <div class="card-back">عشان نفسي أعيش معاكي عمري كله وأدخل عليكي كل يوم بوردة وأشوف ضحكتك 🌹❤️</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- القسم الخامس: الظرف السري (الرسالة الختامية) -->
+        <section class="letter-section section-fade">
+            <h2 class="section-title">رسالة من mero 💌</h2>
+            <div class="envelope-wrapper" id="envelopeWrapper">
+                <div class="envelope" id="envelope">
+                    <div class="flap"></div>
+                    <div class="letter-preview">اضغطي لفتح الرسالة...</div>
+                </div>
+            </div>
+
+            <div class="full-letter hidden" id="fullLetter">
+                <h3>لـ سيمو.. قمر السما اللي منور حياتي 🌙❤️</h3>
+                <p>
+مكنتش أعرف إن في حد ممكن يخطفني من غير أي مجهود كده ويخلي تفاصيل يومي كلها ليها طعم تاني بمجرد كلمة أو ضحكة منه إنتي مش بس أجمل حد شوفته إنتي الحتة الحلوة اللي مكملة كل حاجة فيا.. كل تفصيلة فيكي بتخليني أدوب أكتر كل يوم                </p>
+                <p>
+                    يا رب دايماً مع بعض وبإذن الله اللي جاي في حياتنا يكون أجمل بكتير ونحقق كل أحلامنا سوا بحبك النهاردة وبكرة ولآخر العمر
+                </p>
+                <span class="signature">حبيبك للأبد ❤️</span>
+            </div>
+        </section>
+<!-- القسم السادس: السؤال التفاعلي اللطيف -->
+        <section class="love-quiz-section section-fade">
+            <h2 class="section-title">سؤال مهم جداً.. سيمو بتحبني قد إيه؟ 🥺❤️</h2>
+            <p class="quiz-subtitle">اختاري بصراحة ومفيش هروب!</p>
+            
+            <div class="quiz-buttons" id="quizButtons">
+                <button id="yesBtn" class="quiz-btn yes-btn">قد الدنيا كلها 😍</button>
+                <button id="noBtn" class="quiz-btn no-btn">شوية صغيرين 😒</button>
+            </div>
+
+            <div id="loveResponse" class="love-response hidden">
+                <h3>كنت عارف والله! ❤️✨</h3>
+                <p>وأنا بحبك أكتر من الدنيا وما فيها يا اجمل حاجة حصلتلي ربنا يخليكي ليا وميحرمنيش منك أبداً 💕🌹</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- نافذة تكبير الصور (Lightbox) -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightboxImg" src="" alt="">
+        <p id="lightboxCaption"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
